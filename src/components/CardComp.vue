@@ -13,19 +13,35 @@
         {{ movieCard.original_title }}
       </h4>
       <p>
-        {{ movieCard.title }}
+        {{ movieCard.title }} | {{getFlag(movieCard.original_language)}}
       </p>
     </div>
   </section>
 </template>
 
 <script>
+import getUnicodeFlagIcon from 'country-flag-icons/unicode'
+
 export default {
   props: {
     movieCard: {
       type: Object,
     },
   },
+  data() {
+    return {
+      flag: {
+        en: require("../assets/img/en.png"),
+        it: require("../assets/img/it.png"),
+      },
+    };
+  },
+  methods: {
+    getFlag: function(unicode) {
+      (unicode === "en") ? unicode ='gb': unicode
+      return getUnicodeFlagIcon(unicode)
+    }
+  }
 };
 </script>
 
@@ -63,10 +79,11 @@ section {
     flex-direction: column;
     justify-content: space-between;
     align-content: center;
-    
-    h4, p {
+
+    h4,
+    p {
       margin: 0;
-    }
+    };
   }
 }
 </style>

@@ -17,7 +17,6 @@
         type="text"
         v-model="filter"
         v-show="searchIcon"
-        @keyup.enter="apiCall"
         @change="showApiCall"
       />
       <font-awesome-icon
@@ -55,7 +54,6 @@ export default {
         .get(`${state.urlBase}${state.searchMovie}`, {
           params: {
             api_key: state.apiKey,
-            lenguage: "it-IT",
             query: this.filter,
           },
         })
@@ -89,10 +87,13 @@ section {
   // position: fixed;
   // right: 0;
   // left: 0;
+  flex-wrap: wrap;
+  gap: 10px;
 
   .navLogo {
     display: flex;
     flex-wrap: wrap;
+    justify-content: center;
 
     figure {
       width: 130px;
@@ -115,6 +116,7 @@ section {
         gap: 10px;
         justify-content: center;
         align-items: center;
+        padding: 0;
         margin: 0;
         flex-wrap: wrap;
 
