@@ -29,8 +29,7 @@
 </template>
 
 <script>
-import state from "../store.js";
-import axios from 'axios'
+import { apiCall } from '../store';
 
 export default {
   data() {
@@ -48,28 +47,9 @@ export default {
       searchIcon: false,
     };
   },
-  methods: {
-    apiCall: function () {
-      return axios
-        .get(`${state.urlBase}${state.searchMovie}`, {
-          params: {
-            api_key: state.apiKey,
-            query: this.filter,
-          },
-        })
-        .then((res) => {
-          // console.log(res.data);
-          state.movie = res.data.results;
-          // console.log(state.movie);
-        })
-        .catch((error) => {
-          console.log(error.response);
-        });
-    },
-  },
   computed: {
     showApiCall: function () {
-      return this.apiCall()
+      return apiCall(this.filter)
     }
   }
 };

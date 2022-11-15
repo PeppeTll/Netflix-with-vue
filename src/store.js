@@ -1,4 +1,5 @@
 import Vue from 'vue'
+import axios from 'axios'
 
 const state = Vue.observable (
   {
@@ -13,3 +14,21 @@ const state = Vue.observable (
 )
 
 export default state
+
+export function apiCall(filter) {
+      return axios
+        .get(`${state.urlBase}${state.searchMovie}`, {
+          params: {
+            api_key: state.apiKey,
+            query: filter,
+          },
+        })
+        .then((res) => {
+          // console.log(res.data);
+          state.movie = res.data.results;
+          // console.log(state.movie);
+        })
+        .catch((error) => {
+          console.log(error.response);
+        });
+    }
