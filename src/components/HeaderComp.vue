@@ -84,11 +84,12 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  // position: fixed;
-  // right: 0;
-  // left: 0;
+  position: fixed;
+  right: 0;
+  left: 0;
   flex-wrap: wrap;
   gap: 10px;
+  z-index: 1;
 
   .navLogo {
     display: flex;
