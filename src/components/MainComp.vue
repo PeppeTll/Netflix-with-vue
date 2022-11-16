@@ -31,7 +31,10 @@ export default {
 
 <style lang="scss" scoped>
 section {
-
+  // background-image: url(../assets/img/prova4.jpg) ;
+  // background-size: cover;
+  // background-position: center;
+  // background-repeat: no-repeat;
   h1 {
     padding: 15px 30px;
     margin: 0;

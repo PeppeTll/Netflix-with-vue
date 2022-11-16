@@ -27,5 +27,7 @@ div {
   flex-grow: 1;
   gap: 15px;
   padding: 10px 30px;
+  // background: rgba(0, 0, 0, 0.073);
+  // backdrop-filter: blur(6px);
 }
 </style>

@@ -7,7 +7,7 @@
       <nav>
         <ul>
           <li v-for="(el, i) in navList" :key="i">
-            <a href="#">{{ el }}</a>
+            <a :href="el.href">{{ el.name }}</a>
           </li>
         </ul>
       </nav>
@@ -37,12 +37,30 @@ export default {
     return {
       imgLogo: "img/logo.png",
       navList: [
-        "Home",
-        "SerieTV",
-        "Film",
-        "Nuovi e Popolari",
-        "La mia lista",
-        "Sfoglia per lingua",
+        {
+          name: "Home",
+          href: '../components/HeaderComp.vue'
+        },
+        {
+          name: "SerieTV",
+          href: '../components/SeriesCardWrapper.vue'
+        },
+        {
+          name: "Film",
+          href: '../components/CardWrapper.vue'
+        },
+        {
+          name: "Nuovi e Popolari",
+          href: '#'
+        },
+        {
+          name: "La mia lista",
+          href: '#'
+        },
+        {
+          name: "Sfoglia per lingua",
+          href: '#'
+        },
       ],
       filter: "",
       searchIcon: false,
