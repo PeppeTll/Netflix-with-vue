@@ -12,11 +12,15 @@ import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 import { faUserSecret } from '@fortawesome/free-solid-svg-icons'
 import { faMagnifyingGlass } from '@fortawesome/free-solid-svg-icons'
 import { faBell } from '@fortawesome/free-solid-svg-icons'
+import { faForwardStep } from '@fortawesome/free-solid-svg-icons'
+import { faBackwardStep } from '@fortawesome/free-solid-svg-icons'
 
 /* add icons to the library */
 library.add(faUserSecret)
 library.add(faMagnifyingGlass)
 library.add(faBell)
+library.add(faForwardStep)
+library.add(faBackwardStep)
 
 
 /* add font awesome icon component */

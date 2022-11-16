@@ -51,11 +51,17 @@ export default {
 
 <style lang="scss" scoped>
 section {
+  
+  #card {
+    width: 342px;
+    height: 510px;
+    overflow: hidden;
 
-      img {
-        width: 100%;
-      }
+    img {
+      width: 100%;
     }
+  }
+}
 
   // .CardInfo {
   //   display: flex;
