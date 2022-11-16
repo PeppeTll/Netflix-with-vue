@@ -2,12 +2,12 @@
   <div class="landingWrapper">
     <figure>
       <img
-        :src="`https://image.tmdb.org/t/p/original${movieCard.backdrop_path}`"
+        :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
         alt=""
       />
       <div class="info">
-        <h1>{{ movieCard.original_title }}</h1>
-        <p>{{ movieCard.title }}</p>
+        <h1>{{ movie.original_title }}</h1>
+        <p>{{ movie.title }}</p>
       </div>
     </figure>
   </div>
@@ -19,25 +19,9 @@ import { fetchMovie } from "../store";
 
 export default {
   name: "LandingPage",
-  data() {
-    return {
-      movieCard: {},
-    };
-  },
-  methods: {
-    setMovieCard: function() {
-      this.movieCard = state.singleMovieObject
-    }
-  },
   computed: {
     movie: function() {
       return state.singleMovieObject
-    }
-  },
-  watch: {
-    movie: function () {
-      this.movieCard = state.singleMovieObject
-      console.log(this.movieCard)
     }
   },
   beforeCreate() {
