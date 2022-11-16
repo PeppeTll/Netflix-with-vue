@@ -33,10 +33,10 @@ export default {
     fetchMovie: function () {
       return axios
         .get(
-          `${state.urlBase}${state.singleMovie}${this.randomID(200, 90000)}`,
+          `${state.urlBase}${state.singleMovie}${this.randomID(200, 900000)}`,
           {
             params: {
-              api_key: state.apiKey,
+              api_key: state.apiKey
             },
           }
         )
@@ -70,6 +70,10 @@ export default {
   margin: 0;
   overflow: hidden;
 
+  figure {
+    margin: 0;
+  }
+
   img {
     position: absolute;
     top: 0;
@@ -78,13 +82,17 @@ export default {
     bottom: 0;
     width: 100%;
   }
-}
 
-.info {
-  color: white;
-  font-size: 50px;
-  position: absolute;
-  bottom: 10px;
-  left: 10px;
+  .info {
+    color: white;
+    font-size: 50px;
+    position: absolute;
+    bottom: 10px;
+    left: 10px;
+    background: rgb(34, 41, 195);
+    background: linear-gradient(
+      180deg,
+      rgb(34 41 195 / 0%) 0%, hsl(0deg 0% 0% / 62%) 86%);
+  }
 }
 </style>
