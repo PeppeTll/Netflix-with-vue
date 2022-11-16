@@ -1,6 +1,6 @@
 <template>
   <div>
-    <CardComp v-for="(el, i) in movieShow" :key="i" :movieCard=el />
+    <CardComp v-for="(el, i) in movie" :key="i" :movieCard="el"/>
   </div>
 </template>
 
@@ -13,24 +13,12 @@ export default {
   components: {
     CardComp,
   },
-  data() {
-    return {
-      movie: []
-      };
-    },
-  methods: {
-    movieList: function() {
-      this.movie = state.movie
-      console.log(this.movie)
-      return this.movie
-    }
-  },
   computed: {
-    movieShow: function() {
-      return this.movieList()
-    }
+    movie: function () {
+      return state.movie;
+    },
   },
-  }
+};
 </script>
 
 <style lang="scss" scoped>
@@ -39,6 +27,6 @@ div {
   flex-wrap: wrap;
   flex-grow: 1;
   gap: 15px;
-  padding: 10px 30px
+  padding: 10px 30px;
 }
 </style>

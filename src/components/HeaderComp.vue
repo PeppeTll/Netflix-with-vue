@@ -17,7 +17,6 @@
         type="text"
         v-model="filter"
         v-show="searchIcon"
-        @change="showApiCall"
       />
       <font-awesome-icon
         icon="fa-solid fa-magnifying-glass"
@@ -30,6 +29,8 @@
 
 <script>
 import { apiCall } from '../store';
+import { seriesCall } from '../store';
+import state from '../store';
 
 export default {
   data() {
@@ -47,9 +48,11 @@ export default {
       searchIcon: false,
     };
   },
-  computed: {
-    showApiCall: function () {
-      return apiCall(this.filter)
+  watch: {
+    filter: function(newValue) {
+      state.filter = newValue;
+      apiCall()
+      seriesCall()
     }
   }
 };
@@ -68,13 +71,13 @@ section {
   right: 0;
   left: 0;
   flex-wrap: wrap;
-  gap: 10px;
   z-index: 1;
 
   .navLogo {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
+    gap: 15px;
 
     figure {
       width: 130px;
@@ -94,7 +97,7 @@ section {
       ul {
         list-style: none;
         display: flex;
-        gap: 10px;
+        gap: 15px;
         justify-content: center;
         align-items: center;
         padding: 0;
@@ -112,7 +115,7 @@ section {
   #search {
     color: white;
     display: flex;
-    gap: 15px;
+    gap: 30px;
     font-size: 20px;
 
     svg {

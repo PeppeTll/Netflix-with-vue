@@ -10,20 +10,21 @@ const state = Vue.observable(
     singleMovie: '/movie/',
     searchTV: '/search/tv/',
     movie: [],
+    series: [],
     singleMovieObject: {},
   }
 )
 
 export default state
 
-export function apiCall(filter) {
-  return axios
-    .get(`${state.urlBase}${state.searchMovie}`, {
-      params: {
-        api_key: state.apiKey,
-        query: filter,
-      },
-    })
+export function apiCall() {
+
+  axios.get(`${state.urlBase}${state.searchMovie}`, {
+    params: {
+      api_key: state.apiKey,
+      query: state.filter,
+    },
+  })
     .then((res) => {
       // console.log(res.data);
       state.movie = res.data.results;
@@ -33,6 +34,27 @@ export function apiCall(filter) {
       console.log(error.response);
     });
 }
+
+export function seriesCall() {
+  axios.get(`${state.urlBase}${state.searchTV}`, {
+    params: {
+      api_key: state.apiKey,
+      query: state.filter,
+    },
+  })
+    .then((res) => {
+      // console.log(res.data);
+      state.series = res.data.results;
+      // console.log(state.movie);
+    })
+    .catch((error) => {
+      console.log(error.response);
+    });
+}
+
+
+
+
 
 export function fetchMovie() {
   function randomID(min, max) {
