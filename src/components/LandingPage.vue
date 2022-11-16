@@ -15,7 +15,7 @@
 
 <script>
 import state from "../store";
-import axios from "axios";
+import { fetchMovie } from "../store";
 
 export default {
   name: "LandingPage",
@@ -25,39 +25,23 @@ export default {
     };
   },
   methods: {
-    randomID: function (min, max) {
-      min = Math.ceil(min);
-      max = Math.floor(max);
-      return Math.floor(Math.random() * (max - min) + min);
-    },
-    fetchMovie: function () {
-      return axios
-        .get(
-          `${state.urlBase}${state.singleMovie}${this.randomID(200, 900000)}`,
-          {
-            params: {
-              api_key: state.apiKey
-            },
-          }
-        )
-        .then((res) => {
-          console.log(res.status, res.data, res);
-          if (res.data.backdrop_path === null) {
-            return this.fetchMovie();
-          }
-          this.movieCard = res.data;
-          console.log(this.movieCard);
-        })
-        .catch((error) => {
-          if (error.data === undefined) {
-            return this.fetchMovie();
-          }
-          console.warn(error.data);
-        });
-    },
+    setMovieCard: function() {
+      this.movieCard = state.singleMovieObject
+    }
   },
-  created() {
-    this.fetchMovie();
+  computed: {
+    movie: function() {
+      return state.singleMovieObject
+    }
+  },
+  watch: {
+    movie: function () {
+      this.movieCard = state.singleMovieObject
+      console.log(this.movieCard)
+    }
+  },
+  beforeCreate() {
+    fetchMovie();
   },
 };
 </script>
