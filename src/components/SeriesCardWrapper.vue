@@ -7,11 +7,11 @@
         :seriesCard="el" 
         v-show="i >= min && i < max"
       />
-      <div id="prev" @click="prev">
-        <font-awesome-icon icon="fa-solid fa-backward-step" />
+      <div class="wrapperPrev" >
+        <font-awesome-icon icon="fa-solid fa-backward-step" id="prev" @click="prev" />
       </div>
-      <div id="next" @click="next">
-        <font-awesome-icon icon="fa-solid fa-forward-step" />
+      <div class="wrapperNext">
+        <font-awesome-icon icon="fa-solid fa-forward-step" id="next" @click="next" />
       </div>
     </div>
   </div>

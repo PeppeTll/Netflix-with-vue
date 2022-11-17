@@ -93,10 +93,6 @@ export function seriesCall() {
     });
 }
 
-
-
-
-
 export function fetchMovie() {
   function randomID(min, max) {
     min = Math.ceil(min);
@@ -113,7 +109,7 @@ export function fetchMovie() {
   )
     .then((res) => {
       // console.log(res.status, res.data, res);
-      if (res.data.backdrop_path === null) {
+      if (res.data.backdrop_path === null || res.data.adult) {
         return fetchMovie();
       }
       state.singleMovieObject = res.data;
@@ -125,4 +121,12 @@ export function fetchMovie() {
       }
       console.warn(error.data);
     });
+}
+
+export function getImage(lista) {
+  if (lista.poster_path === null) {
+    return require("../src/assets/img/404.jpg")
+  } else {
+    return `https://image.tmdb.org/t/p/w342${lista.poster_path}`
+  }
 }

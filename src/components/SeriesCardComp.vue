@@ -1,10 +1,9 @@
 <template>
   <section>
-    <div id="card">
-        <img
-          :src="`https://image.tmdb.org/t/p/w342${seriesCard.poster_path}`"
-          alt=""
-        />
+    <div class="wrapperCard">
+      <div id="card">
+        <img :src="getImageFunc()" alt="" />
+      </div>
     </div>
     <!-- <div class="CardInfo">
       <h4>
@@ -19,6 +18,7 @@
 </template>
 
 <script>
+import { getImage } from "../store";
 export default {
   name: "SeriesCard",
   props: {
@@ -44,17 +44,42 @@ export default {
         return this.flag["en"];
       }
     },
+    getImageFunc: function () {
+      return getImage(this.seriesCard);
+    },
   },
 };
 </script>
 
 <style lang="scss" scoped>
 section {
+  .wrapperCard {
+    border: 2px solid rgb(0, 0, 0);
+    border-radius: 20px;
+    #card {
+      /* aggiungere un bordo alle card */
+      border-radius: 20px;
+      max-width: 342px;
+      max-height: 470px;
+      overflow: hidden;
 
       img {
-        width: 100%;
+        max-width: 100%;
       }
     }
+
+    &:hover {
+      border: 2px solid rgb(229, 9, 20);
+      padding: 5px;
+      transition: all 500ms ease-in-out;
+      #card {
+        max-width: 335px;
+        max-height: 465px;
+        transition: all 500ms ease-in-out;
+      }
+    }
+  }
+}
 
 //   .CardInfo {
 //     display: flex;
