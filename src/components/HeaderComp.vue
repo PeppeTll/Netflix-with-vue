@@ -69,6 +69,8 @@ export default {
   watch: {
     filter: function(newValue) {
       state.filter = newValue;
+      state.minIndexMovie = state.minIndexSeries = 0
+      state.maxIndexMovie = state.maxIndexSeries = 7
       apiCall()
       seriesCall()
     }
