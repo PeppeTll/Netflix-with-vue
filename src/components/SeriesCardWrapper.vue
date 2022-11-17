@@ -20,6 +20,8 @@
 <script>
 import SeriesCard from "./SeriesCardComp.vue";
 import state from "../store";
+import { nextSlideSeries } from "../store";
+import { prevSlideSeries } from "../store";
 export default {
   name: "SeriesCardWrapper",
   components: {
@@ -27,67 +29,35 @@ export default {
   },
   data() {
     return {
-      min: 0,
-      max: 7,
     };
   },
   methods: {
-    next: function() {
-      this.min += 7
-      this.max += 7
-      if (this.max > this.seriesList.length) {
-        this.max = this.seriesList.length
-        this.min = this.seriesList.length - 7
-      }
+    next: function () {
+      return nextSlideSeries(this.seriesList);
     },
-    prev: function() {
-      this.min -= 7
-      this.max -= 7
-      if (this.min <= 0) {
-        this.max = 7
-        this.min = 0
-      }
-    }
+    prev: function () {
+      return prevSlideSeries()
+    },
   },
   computed: {
     seriesList: function () {
       return state.series;
     },
+    
+    min: function() {
+      return state.minIndexSeries
+    },
+    max: function() {
+      return state.maxIndexSeries
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/mixins';
 div {
-  padding: 10px;
-  .container {
-    display: flex;
-    width: 99%;
-    height: 515px;
-    // border: 2px solid white;
-    column-gap: 10px;
-    overflow: hidden;
-    padding: 10px;
-    position: relative;
-
-    #prev {
-      position: absolute;
-      font-size: 60px;
-      color: white;
-      left: 0;
-      top: 45%;
-      cursor: pointer;
-    }
-
-    #next {
-      position: absolute;
-      font-size: 60px;
-      color: white;
-      right: 0;
-      top: 45%;
-      cursor: pointer;
-    }
-  }
+  @include sliderWrapper
 }
 </style>
 

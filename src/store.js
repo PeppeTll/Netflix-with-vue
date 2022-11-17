@@ -12,13 +12,54 @@ const state = Vue.observable(
     movie: [],
     series: [],
     singleMovieObject: {},
+    maxIndexSeries: 7,
+    minIndexSeries: 0,
+    maxIndexMovie: 7,
+    minIndexMovie: 0,
   }
 )
 
 export default state
 
-export function apiCall() {
+export function nextSlideSeries(list) {
+  state.minIndexSeries += 7
+  state.maxIndexSeries += 7
+  if (state.maxIndexSeries > list.length) {
+    state.maxIndexSeries = list.length
+    state.minIndexSeries = list.length - 7
+    console.log('arriva')
+  }
+}
 
+export function nextSlideMovie(list) {
+  state.minIndexMovie += 7
+  state.maxIndexMovie += 7
+  if (state.maxIndexMovie > list.length) {
+    state.maxIndexMovie = list.length
+    state.minIndexMovie = list.length - 7
+    console.log('arriva')
+  }
+}
+
+export function prevSlideSeries() {
+  state.minIndexSeries -= 7
+  state.maxIndexSeries -= 7
+  if (state.minIndexSeries <= 0) {
+    state.maxIndexSeries = 7
+    state.minIndexSeries = 0
+  }
+}
+
+export function prevSlideMovie() {
+  state.minIndexMovie -= 7
+  state.maxIndexMovie -= 7
+  if (state.minIndexMovie <= 0) {
+    state.maxIndexMovie = 7
+    state.minIndexMovie = 0
+  }
+}
+
+export function apiCall() {
   axios.get(`${state.urlBase}${state.searchMovie}`, {
     params: {
       api_key: state.apiKey,

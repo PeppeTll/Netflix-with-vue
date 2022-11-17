@@ -7,3 +7,37 @@
 @mixin container {
   padding: 10px 50px;
 }
+
+@mixin sliderWrapper {
+  div {
+  padding: 10px;
+  .container {
+    display: flex;
+    width: 99%;
+    height: 515px;
+    // border: 2px solid white;
+    column-gap: 10px;
+    overflow: hidden;
+    padding: 10px;
+    position: relative;
+
+    #prev {
+      position: absolute;
+      font-size: 60px;
+      color: white;
+      left: 0;
+      top: 45%;
+      cursor: pointer;
+    }
+
+    #next {
+      position: absolute;
+      font-size: 60px;
+      color: white;
+      right: 0;
+      top: 45%;
+      cursor: pointer;
+    }
+  }
+}
+}

@@ -20,74 +20,39 @@
 <script>
 import CardComp from "./CardComp";
 import state from "../store";
+import { nextSlideMovie } from "../store";
+import { prevSlideMovie } from "../store";
 
 export default {
   name: "CardWrapper",
   components: {
     CardComp,
   },
-  data() {
-    return {
-      min: 0,
-      max: 7,
-    };
-  },
   methods: {
-    next: function() {
-      this.min += 7
-      this.max += 7
-      if (this.max > this.movie.length) {
-        this.max = this.movie.length
-        this.min = this.movie.length - 7
-      }
+    next: function () {
+      return nextSlideMovie(this.movie);
     },
-    prev: function() {
-      this.min -= 7
-      this.max -= 7
-      if (this.min <= 0) {
-        this.max = 7
-        this.min = 0
-      }
-    }
+    prev: function () {
+      return prevSlideMovie()
+    },
   },
   computed: {
     movie: function () {
       return state.movie;
     },
+    min: function() {
+      return state.minIndexMovie
+    },
+    max: function() {
+      return state.maxIndexMovie
+    }
   },
 };
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/mixins';
 div {
-  padding: 10px;
-  .container {
-    display: flex;
-    width: 99%;
-    height: 515px;
-    // border: 2px solid white;
-    column-gap: 10px;
-    overflow: hidden;
-    padding: 10px;
-    position: relative;
-
-    #prev {
-      position: absolute;
-      font-size: 60px;
-      color: white;
-      left: 0;
-      top: 45%;
-      cursor: pointer;
-    }
-
-    #next {
-      position: absolute;
-      font-size: 60px;
-      color: white;
-      right: 0;
-      top: 45%;
-      cursor: pointer;
-    }
-  }
+  @include sliderWrapper
 }
 </style>
