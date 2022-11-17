@@ -53,9 +53,10 @@ export default {
 section {
   
   #card {
-    width: 342px;
-    height: 510px;
-    overflow: hidden;
+    /* aggiungere un bordo alle card */
+    // width: 342px;
+    // height: 510px;
+    // overflow: hidden;
 
     img {
       width: 100%;

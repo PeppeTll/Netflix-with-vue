@@ -2,7 +2,7 @@
   <section>
     <div id="card">
         <img
-          :src="`https://image.tmdb.org/t/p/w500${seriesCard.poster_path}`"
+          :src="`https://image.tmdb.org/t/p/w342${seriesCard.poster_path}`"
           alt=""
         />
     </div>
