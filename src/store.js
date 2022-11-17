@@ -22,23 +22,25 @@ const state = Vue.observable(
 export default state
 
 export function nextSlideSeries(list) {
-  state.minIndexSeries += 7
-  state.maxIndexSeries += 7
+  state.minIndexSeries += 4
+  state.maxIndexSeries += 4
   if (state.maxIndexSeries > list.length) {
     state.maxIndexSeries = list.length
-    state.minIndexSeries = list.length - 7
+    state.minIndexSeries = list.length - 4
     console.log('arriva')
   }
 }
 
 export function nextSlideMovie(list) {
-  state.minIndexMovie += 7
-  state.maxIndexMovie += 7
+  state.minIndexMovie += 1
+  state.maxIndexMovie += 1
   if (state.maxIndexMovie > list.length) {
     state.maxIndexMovie = list.length
     state.minIndexMovie = list.length - 7
+    console.log(state.minIndexMovie, state.maxIndexMovie)
     console.log('arriva')
   }
+  console.log(state.minIndexMovie, state.maxIndexMovie)
 }
 
 export function prevSlideSeries() {
@@ -51,12 +53,14 @@ export function prevSlideSeries() {
 }
 
 export function prevSlideMovie() {
-  state.minIndexMovie -= 7
-  state.maxIndexMovie -= 7
+  state.minIndexMovie -= 1
+  state.maxIndexMovie -= 1
   if (state.minIndexMovie <= 0) {
     state.maxIndexMovie = 7
     state.minIndexMovie = 0
+    console.log(state.minIndexMovie, state.maxIndexMovie)
   }
+  console.log(state.minIndexMovie, state.maxIndexMovie)
 }
 
 export function apiCall() {

@@ -5,7 +5,7 @@
         v-for="(el, i) in movie"
         :key="i"
         :movieCard="el"
-        v-show="i >= min && i < max"
+        :class="(i >= min && i < max) ? 'active' : 'deactive'"
       />
       <div class="wrapperPrev" >
         <font-awesome-icon icon="fa-solid fa-backward-step" id="prev" @click="prev" />
@@ -53,6 +53,21 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/scss/mixins';
 div {
-  @include sliderWrapper
+  @include sliderWrapper;
+  .wrapperPrev {
+    z-index: 10;
+  }
+
+  .wrapperNext {
+    z-index: 10;
+  }
+
+  .active {
+    display: block;
+  }
+
+  .deactive {
+    display: none;
+  }
 }
 </style>
