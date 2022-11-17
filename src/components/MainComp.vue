@@ -30,13 +30,15 @@ export default {
 </script>
 
 <style lang="scss" scoped>
+@import '../assets/scss/mixins';
 section {
-  // background-image: url(../assets/img/prova4.jpg) ;
-  // background-size: cover;
-  // background-position: center;
-  // background-repeat: no-repeat;
+  .child {
+    @include container;
+    display: block;
+    max-width: 100%
+  }
   h1 {
-    padding: 15px 30px;
+    @include container;
     margin: 0;
     color: white;
   }

@@ -83,6 +83,7 @@ export default {
 
 section {
   @include container;
+  padding: 20px;
   background-color: rgb(10, 10, 10);
   display: flex;
   justify-content: space-between;

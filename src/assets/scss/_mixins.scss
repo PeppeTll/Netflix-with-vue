@@ -5,56 +5,57 @@
 }
 
 @mixin container {
-  padding: 10px 50px;
+  padding: 10px 30px !important;
 }
 
 @mixin sliderWrapper {
   div {
-  padding: 10px;
-  .container {
-    display: flex;
-    width: 99%;
-    max-height: 515px;
-    // border: 2px solid white;
-    column-gap: 10px;
-    overflow: hidden;
     padding: 10px;
-    position: relative;
+    max-width: 100%;
 
-    .wrapperPrev {
-      position: absolute;
-      left: 0;
-      height: 95%;
+    .container {
       display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 4em;
-      background-color: rgba(0, 0, 0, 0.168);
-      backdrop-filter: blur(8px);
-    }
+      max-width: 90%;
+      max-height: 200%;
+      // border: 2px solid white;
+      column-gap: 10px;
+      padding: 10px;
+      position: relative;
+
+      .wrapperPrev {
+        position: absolute;
+        left: 0;
+        height: 95%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 4em;
+        background-color: rgba(0, 0, 0, 0.168);
+        backdrop-filter: blur(8px);
+      }
 
       #prev {
-      color: white;
-      cursor: pointer;
-    }
-    
-    .wrapperNext {
-      position: absolute;
-      right: 0;
-      height: 95%;
-      display: flex;
-      justify-content: center;
-      align-items: center;
-      font-size: 4em;
-      background-color: rgba(0, 0, 0, 0.168);
-      backdrop-filter: blur(8px);
+        color: white;
+        cursor: pointer;
+      }
 
-      #next {
-      color: white;
-      cursor: pointer;
+      .wrapperNext {
+        position: absolute;
+        right: 0;
+        height: 95%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-size: 4em;
+        background-color: rgba(0, 0, 0, 0.168);
+        backdrop-filter: blur(8px);
+
+        #next {
+          color: white;
+          cursor: pointer;
+        }
+      }
+
     }
-    }
-    
   }
-}
 }

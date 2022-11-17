@@ -52,7 +52,7 @@ export default {
   }
 
   .info {
-    color: white;
+    color: rgb(229, 9, 20);
     font-size: 50px;
     position: absolute;
     bottom: 10px;
