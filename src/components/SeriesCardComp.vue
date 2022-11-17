@@ -17,7 +17,11 @@
           />
         </h3>
         <h2>
-          <font-awesome-icon icon="fa-solid fa-star" class="star" />
+          <font-awesome-icon 
+            icon="fa-solid fa-star" 
+            v-for="(el, i) in starsList" :key="i" 
+            :class="(el <= stars()) ? 'goldStar': 'whiteStar'"
+          />
         </h2>
         <p>
           {{ seriesCard.overview }}
@@ -44,6 +48,13 @@ export default {
         fr: require("../assets/img/fr.png"),
         es: require("../assets/img/es.png"),
       },
+      starsList: [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
     };
   },
   methods: {
@@ -57,6 +68,9 @@ export default {
     getImageFunc: function () {
       return getImage(this.seriesCard);
     },
+    stars: function() {
+      return Math.ceil(this.seriesCard.vote_average / 2)
+    }
   },
 };
 </script>
@@ -105,8 +119,11 @@ section {
         align-items: center;
         column-gap: 10px;
       }
-      .star {
+      .goldStar {
         color: gold;
+      }
+      .whiteStar {
+        color: white;
       }
       .flags {
         width: 20px;

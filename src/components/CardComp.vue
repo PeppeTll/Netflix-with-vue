@@ -17,7 +17,11 @@
           />
         </h3>
         <h2>
-          <font-awesome-icon icon="fa-solid fa-star" class="star" />
+          <font-awesome-icon 
+            icon="fa-solid fa-star" 
+            v-for="(el, i) in starsList" :key="i" 
+            :class="(el <= stars()) ? 'goldStar': 'whiteStar'"
+          />
         </h2>
         <p>
           {{ movieCard.overview }}
@@ -46,6 +50,13 @@ export default {
         fr: require("../assets/img/fr.png"),
         es: require("../assets/img/es.png"),
       },
+      starsList: [
+        1,
+        2,
+        3,
+        4,
+        5
+      ]
     };
   },
   methods: {
@@ -59,6 +70,9 @@ export default {
     getImageFunc: function () {
       return getImage(this.movieCard);
     },
+    stars: function() {
+      return Math.ceil(this.movieCard.vote_average / 2)
+    }
   },
 };
 </script>
@@ -67,15 +81,14 @@ export default {
 section {
   .wrapperCard {
     display: flex;
-    width: 100%;
-    max-height: 100%;
+    width: 342px;
+    flex-grow: 1;
     border: 2px solid rgb(0, 0, 0);
     border-radius: 20px;
     position: relative;
     transition: all 1.5s ease-in-out;
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.047);
-    z-index: 1;
+    background-color: rgba(0, 0, 0, 0.419);
     #card {
       /* aggiungere un bordo alle card */
       border-radius: 20px;
@@ -99,6 +112,7 @@ section {
       padding: 20px !important;
       opacity: 0;
       transition: all 0.2s ease-in-out;
+      backdrop-filter: blur(8px);
       h1 {
         font-size: 60px;
         margin: 0;
@@ -109,8 +123,11 @@ section {
         align-items: center;
         column-gap: 10px;
       }
-      .star {
+      .goldStar {
         color: gold;
+      }
+      .whiteStar {
+        color: white;
       }
       .flags {
         width: 20px;
@@ -120,11 +137,8 @@ section {
     &:hover {
       border: 2px solid rgb(229, 9, 20);
       padding: 5px;
-      width: 300%;
-      background-color: rgba(0, 0, 0, 0.241);
-      backdrop-filter: blur(8px);
+      width: 900px;
       transition-delay: 0.3s;
-      z-index: 2;
       #card {
         -webkit-box-shadow: 12px 2px 15px 5px rgb(229, 9, 20);
         box-shadow: 12px 2px 15px 5px rgb(229, 9, 20);

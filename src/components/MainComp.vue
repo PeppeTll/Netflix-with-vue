@@ -30,15 +30,21 @@ export default {
 </script>
 
 <style lang="scss" scoped>
-@import '../assets/scss/mixins';
+@import "../assets/scss/mixins";
 section {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
   .child {
-    @include container;
-    display: block;
-    max-width: 100%
+    padding: 10px 30px !important;
+    display: flex;
+    width: 100%;
+    justify-content: center;
+    overflow: hidden;
+    
   }
   h1 {
-    @include container;
+    padding: 10px 30px !important;
     margin: 0;
     color: white;
   }

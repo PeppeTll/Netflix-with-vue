@@ -36,7 +36,7 @@ export default {
       return nextSlideSeries(this.seriesList);
     },
     prev: function () {
-      return prevSlideSeries()
+      return prevSlideSeries(this.seriesList)
     },
   },
   computed: {

@@ -26,35 +26,45 @@ export function nextSlideSeries(list) {
   state.maxIndexSeries += 4
   if (state.maxIndexSeries > list.length) {
     state.maxIndexSeries = list.length
-    state.minIndexSeries = list.length - 4
+    state.minIndexSeries = list.length - 7
     console.log('arriva')
   }
 }
 
 export function nextSlideMovie(list) {
-  state.minIndexMovie += 1
-  state.maxIndexMovie += 1
-  if (state.maxIndexMovie > list.length) {
+  state.minIndexMovie += 4
+  state.maxIndexMovie += 4
+  if (state.maxIndexMovie >= list.length) {
     state.maxIndexMovie = list.length
-    state.minIndexMovie = list.length - 7
+    state.minIndexMovie = list.length - 4
     console.log(state.minIndexMovie, state.maxIndexMovie)
     console.log('arriva')
   }
   console.log(state.minIndexMovie, state.maxIndexMovie)
 }
 
-export function prevSlideSeries() {
-  state.minIndexSeries -= 7
-  state.maxIndexSeries -= 7
+export function prevSlideSeries(list) {
+if (state.minIndexSeries === list.length - 4) {
+    state.maxIndexSeries = list.length 
+    state.minIndexSeries = list.length - 6
+  } else {
+    state.minIndexSeries -= 1
+    state.maxIndexSeries -= 1
+  }
   if (state.minIndexSeries <= 0) {
     state.maxIndexSeries = 7
     state.minIndexSeries = 0
   }
 }
 
-export function prevSlideMovie() {
-  state.minIndexMovie -= 1
-  state.maxIndexMovie -= 1
+export function prevSlideMovie(list) {
+  if (state.minIndexMovie === list.length - 4) {
+    state.maxIndexMovie = list.length 
+    state.minIndexMovie = list.length - 6
+  } else {
+    state.minIndexMovie -= 1
+    state.maxIndexMovie -= 1
+  }
   if (state.minIndexMovie <= 0) {
     state.maxIndexMovie = 7
     state.minIndexMovie = 0
