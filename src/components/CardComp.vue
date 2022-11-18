@@ -99,7 +99,7 @@ section {
       display: flex;
       flex-direction: column;
       row-gap: 20px;
-      flex-shrink: 1;
+      // flex-shrink: 1;
       align-items: center;
       color: white;
       position: absolute;
@@ -134,6 +134,7 @@ section {
       .flags {
         width: 20px;
         height: 20px;
+        margin-left: 10px !important;
       }
     }
     &:hover {
