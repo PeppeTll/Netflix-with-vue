@@ -41,11 +41,11 @@ export default {
         },
         {
           name: "SerieTV",
-          href: "../components/SeriesCardWrapper.vue",
+          href: "#series",
         },
         {
           name: "Film",
-          href: "../components/CardWrapper.vue",
+          href: "#movies",
         },
         {
           name: "Nuovi e Popolari",

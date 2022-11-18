@@ -1,8 +1,8 @@
 <template>
   <section>
     <Landing class="landing" />
-    <CardWrapper class="child movie" />
-    <SeriesCardWrapper  class="child" />
+    <CardWrapper class="child movie" id="movies"/>
+    <SeriesCardWrapper  class="child" id="series"/>
   </section>
 </template>
 

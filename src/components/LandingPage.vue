@@ -20,9 +20,9 @@ import { fetchMovie } from "../store";
 export default {
   name: "LandingPage",
   computed: {
-    movie: function() {
-      return state.singleMovieObject
-    }
+    movie: function () {
+      return state.singleMovieObject;
+    },
   },
   beforeCreate() {
     fetchMovie();
@@ -55,10 +55,13 @@ export default {
     color: rgb(254, 254, 254);
     position: absolute;
     font-size: 3vw;
-    bottom: 1%;
-    left: 10px;
+    bottom: 0;
+    left: 0%;
     background: rgba(0, 0, 0, 0.414);
     backdrop-filter: blur(8px);
+    h1, p {
+      padding: 15px !important;
+    }
   }
 }
 </style>

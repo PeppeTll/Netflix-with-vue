@@ -115,7 +115,7 @@ section {
         display: none;
       }
       h1 {
-        font-size: 1vw;
+        font-size: 30px;
         margin: 0;
         color: rgb(229, 9, 20);
       }
