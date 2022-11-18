@@ -34,7 +34,7 @@ export default {
 .landingWrapper {
   position: relative;
   max-width: 100vw;
-  height: 50vw;
+  height: 40vw;
   margin: 0;
   overflow: hidden;
 
@@ -52,15 +52,13 @@ export default {
   }
 
   .info {
-    color: rgb(229, 9, 20);
-    font-size: 50px;
+    color: rgb(254, 254, 254);
     position: absolute;
-    bottom: 10px;
+    font-size: 3vw;
+    bottom: 1%;
     left: 10px;
-    background: rgb(34, 41, 195);
-    background: linear-gradient(
-      180deg,
-      rgb(34 41 195 / 0%) 0%, hsl(0deg 0% 0% / 62%) 86%);
+    background: rgba(0, 0, 0, 0.414);
+    backdrop-filter: blur(8px);
   }
 }
 </style>

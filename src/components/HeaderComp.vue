@@ -13,11 +13,7 @@
       </nav>
     </div>
     <div id="search">
-      <input
-        type="text"
-        v-model="filter"
-        v-show="searchIcon"
-      />
+      <input type="text" v-model="filter" v-show="searchIcon" />
       <font-awesome-icon
         icon="fa-solid fa-magnifying-glass"
         @click="searchIcon = !searchIcon"
@@ -28,9 +24,11 @@
 </template>
 
 <script>
-import { apiCall } from '../store';
-import { seriesCall } from '../store';
-import state from '../store';
+import { apiCall } from "../store";
+import { seriesCall } from "../store";
+import { popularMovies } from "../store";
+import { popularSeries } from "../store";
+import state from "../store";
 
 export default {
   data() {
@@ -39,27 +37,27 @@ export default {
       navList: [
         {
           name: "Home",
-          href: '../components/HeaderComp.vue'
+          href: "../components/HeaderComp.vue",
         },
         {
           name: "SerieTV",
-          href: '../components/SeriesCardWrapper.vue'
+          href: "../components/SeriesCardWrapper.vue",
         },
         {
           name: "Film",
-          href: '../components/CardWrapper.vue'
+          href: "../components/CardWrapper.vue",
         },
         {
           name: "Nuovi e Popolari",
-          href: '#'
+          href: "#",
         },
         {
           name: "La mia lista",
-          href: '#'
+          href: "#",
         },
         {
           name: "Sfoglia per lingua",
-          href: '#'
+          href: "#",
         },
       ],
       filter: "",
@@ -67,14 +65,20 @@ export default {
     };
   },
   watch: {
-    filter: function(newValue) {
+    filter: function (newValue) {
       state.filter = newValue;
-      state.minIndexMovie = state.minIndexSeries = 0
-      state.maxIndexMovie = state.maxIndexSeries = 7
-      apiCall()
-      seriesCall()
-    }
-  }
+      apiCall();
+      seriesCall();
+      if (state.filter === "") {
+        popularMovies();
+        popularSeries();
+      }
+    },
+  },
+  beforeCreate() {
+    popularMovies();
+    popularSeries();
+  },
 };
 </script>
 

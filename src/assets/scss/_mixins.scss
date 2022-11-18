@@ -15,55 +15,19 @@
 
     .container {
       display: flex;
-      width: 90%;
-      // flex-grow: 1;
-      flex-shrink: 1;
-      max-height: 200%;
+      justify-content: center;
+      flex-wrap: wrap;
+      flex-basis: 15%;
+      max-width: 100%;
+      flex-grow: 1;
+      // flex-shrink: 1;
+      // max-height: 200%;
       // border: 2px solid white;
       border-radius: 20px;
-      column-gap: 10px;
+      gap: 20px;
       padding: 10px;
       position: relative;
-      overflow: hidden;
-
-      .wrapperPrev {
-        position: absolute;
-        left: 0;
-        height: 100%;
-        display: flex;
-        border-top-left-radius: 20px;
-        border-bottom-left-radius: 20px;
-        justify-content: center;
-        align-items: center;
-        font-size: 4em;
-        background-color: rgba(0, 0, 0, 0.168);
-        backdrop-filter: blur(8px);
-      }
-
-      #prev {
-        color: white;
-        cursor: pointer;
-      }
-
-      .wrapperNext {
-        position: absolute;
-        right: 0;
-        height: 100%;
-        display: flex;
-        justify-content: center;
-        border-top-right-radius: 20px;
-        border-bottom-right-radius: 20px;
-        align-items: center;
-        font-size: 4em;
-        background-color: rgba(0, 0, 0, 0.168);
-        backdrop-filter: blur(8px);
-
-        #next {
-          color: white;
-          cursor: pointer;
-        }
-      }
-
+      // overflow: hidden;
     }
   }
 }

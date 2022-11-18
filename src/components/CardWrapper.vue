@@ -1,18 +1,12 @@
 <template>
   <div>
+    <h1 class="h1movie">FILM ORIGINALI NETFLIX</h1>
     <div class="container">
       <CardComp
         v-for="(el, i) in movie"
         :key="i"
         :movieCard="el"
-        v-show="i >= min && i < max"
       />
-      <div class="wrapperPrev" >
-        <font-awesome-icon icon="fa-solid fa-backward-step" id="prev" @click="prev" />
-      </div>
-      <div class="wrapperNext">
-        <font-awesome-icon icon="fa-solid fa-forward-step" id="next" @click="next" />
-      </div>
     </div>
   </div>
 </template>
@@ -20,32 +14,16 @@
 <script>
 import CardComp from "./CardComp";
 import state from "../store";
-import { nextSlideMovie } from "../store";
-import { prevSlideMovie } from "../store";
 
 export default {
   name: "CardWrapper",
   components: {
     CardComp,
   },
-  methods: {
-    next: function () {
-      return nextSlideMovie(this.movie);
-    },
-    prev: function () {
-      return prevSlideMovie(this.movie)
-    },
-  },
   computed: {
     movie: function () {
       return state.movie;
     },
-    min: function() {
-      return state.minIndexMovie
-    },
-    max: function() {
-      return state.maxIndexMovie
-    }
   },
 };
 </script>
@@ -53,6 +31,12 @@ export default {
 <style lang="scss" scoped>
 @import '../assets/scss/mixins';
 div {
-  @include sliderWrapper
+  @include sliderWrapper;
+  .h1movie{
+    font-size: 4vw;
+    color: rgb(229,9,20);
+    padding-bottom: 15px !important;
+    align-self: center;
+  }
 }
 </style>

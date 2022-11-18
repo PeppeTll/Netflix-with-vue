@@ -1,10 +1,8 @@
 <template>
   <section>
-    <Landing />
-    <h1>FILM ORIGINALI NETFLIX</h1>
-    <CardWrapper v-show="filter.length >= 1" class="child" />
-    <h1>SERIE ORIGINALI NETFLIX</h1>
-    <SeriesCardWrapper v-show="filter.length >= 1" class="child" />
+    <Landing class="landing" />
+    <CardWrapper class="child movie" />
+    <SeriesCardWrapper  class="child" />
   </section>
 </template>
 
@@ -35,9 +33,11 @@ section {
   display: flex;
   flex-direction: column;
   justify-content: center;
+  position: relative;
   .child {
     padding: 10px 30px !important;
     display: flex;
+    flex-direction: column;
     width: 100%;
     justify-content: center;
     overflow: hidden;

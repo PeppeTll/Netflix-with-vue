@@ -7,70 +7,50 @@ const state = Vue.observable(
     urlBase: 'https://api.themoviedb.org/3',
     apiKey: '2d3bc2d11414211b6028e8f26ad4bd6e',
     searchMovie: '/search/movie/',
-    singleMovie: '/movie/',
     searchTV: '/search/tv/',
     movie: [],
     series: [],
+    topMovies: '/movie/popular',
+    topSeries: '/tv/top_rated',
+    singleMovie: '/movie/',
     singleMovieObject: {},
-    maxIndexSeries: 7,
-    minIndexSeries: 0,
-    maxIndexMovie: 7,
-    minIndexMovie: 0,
   }
 )
 
 export default state
 
-export function nextSlideSeries(list) {
-  state.minIndexSeries += 4
-  state.maxIndexSeries += 4
-  if (state.maxIndexSeries > list.length) {
-    state.maxIndexSeries = list.length
-    state.minIndexSeries = list.length - 7
-    console.log('arriva')
-  }
+export function popularMovies() {
+  axios.get(`${state.urlBase}${state.topMovies}`, {
+    params: {
+      api_key: state.apiKey,
+      language: 'it-IT'
+    },
+  })
+    .then((res) => {
+      // console.log(res.data);
+      state.movie = res.data.results;
+      // console.log(state.movie);
+    })
+    .catch((error) => {
+      console.log(error.response);
+    });
 }
 
-export function nextSlideMovie(list) {
-  state.minIndexMovie += 4
-  state.maxIndexMovie += 4
-  if (state.maxIndexMovie >= list.length) {
-    state.maxIndexMovie = list.length
-    state.minIndexMovie = list.length - 4
-    console.log(state.minIndexMovie, state.maxIndexMovie)
-    console.log('arriva')
-  }
-  console.log(state.minIndexMovie, state.maxIndexMovie)
-}
-
-export function prevSlideSeries(list) {
-if (state.minIndexSeries === list.length - 4) {
-    state.maxIndexSeries = list.length 
-    state.minIndexSeries = list.length - 6
-  } else {
-    state.minIndexSeries -= 1
-    state.maxIndexSeries -= 1
-  }
-  if (state.minIndexSeries <= 0) {
-    state.maxIndexSeries = 7
-    state.minIndexSeries = 0
-  }
-}
-
-export function prevSlideMovie(list) {
-  if (state.minIndexMovie === list.length - 4) {
-    state.maxIndexMovie = list.length 
-    state.minIndexMovie = list.length - 6
-  } else {
-    state.minIndexMovie -= 1
-    state.maxIndexMovie -= 1
-  }
-  if (state.minIndexMovie <= 0) {
-    state.maxIndexMovie = 7
-    state.minIndexMovie = 0
-    console.log(state.minIndexMovie, state.maxIndexMovie)
-  }
-  console.log(state.minIndexMovie, state.maxIndexMovie)
+export function popularSeries() {
+  axios.get(`${state.urlBase}${state.topSeries}`, {
+    params: {
+      api_key: state.apiKey,
+      language: 'it-IT'
+    },
+  })
+    .then((res) => {
+      // console.log(res.data);
+      state.series = res.data.results;
+      // console.log(state.movie);
+    })
+    .catch((error) => {
+      console.log(error.response);
+    });
 }
 
 export function apiCall() {

@@ -6,7 +6,7 @@
       </div>
       <div class="CardInfo">
         <h1>
-          {{ seriesCard.original_name}}
+          {{ seriesCard.original_name }}
         </h1>
         <h3>
           {{ seriesCard.name }}
@@ -17,10 +17,11 @@
           />
         </h3>
         <h2>
-          <font-awesome-icon 
-            icon="fa-solid fa-star" 
-            v-for="(el, i) in starsList" :key="i" 
-            :class="(el <= stars()) ? 'goldStar': 'whiteStar'"
+          <font-awesome-icon
+            icon="fa-solid fa-star"
+            v-for="(el, i) in starsList"
+            :key="i"
+            :class="el <= stars() ? 'goldStar' : 'whiteStar'"
           />
         </h2>
         <p>
@@ -48,13 +49,7 @@ export default {
         fr: require("../assets/img/fr.png"),
         es: require("../assets/img/es.png"),
       },
-      starsList: [
-        1,
-        2,
-        3,
-        4,
-        5
-      ]
+      starsList: [1, 2, 3, 4, 5],
     };
   },
   methods: {
@@ -68,9 +63,9 @@ export default {
     getImageFunc: function () {
       return getImage(this.seriesCard);
     },
-    stars: function() {
-      return Math.ceil(this.seriesCard.vote_average / 2)
-    }
+    stars: function () {
+      return Math.ceil(this.seriesCard.vote_average / 2);
+    },
   },
 };
 </script>
@@ -80,21 +75,22 @@ section {
   .wrapperCard {
     display: flex;
     width: 342px;
+    flex-grow: 1;
     border: 2px solid rgb(0, 0, 0);
     border-radius: 20px;
     position: relative;
     transition: all 1.5s ease-in-out;
     overflow: hidden;
-    background-color: rgba(255, 255, 255, 0.047);
+    background-color: rgba(0, 0, 0, 0.419);
     #card {
       /* aggiungere un bordo alle card */
       border-radius: 20px;
-      max-width: 342px;
-      max-height: 470px;
-      overflow: hidden;
+      width: 100%;
+      // overflow: hidden;
       transition: all 1.5s ease-in-out;
       img {
         max-width: 100%;
+        border-radius: 20px;
       }
     }
     .CardInfo {
@@ -104,11 +100,19 @@ section {
       align-items: center;
       color: white;
       position: absolute;
+      width: 100%;
       height: 100%;
-      left: 345px;
+      top: 100%;
       padding: 20px !important;
       opacity: 0;
-      transition: all 0.2s ease-in-out;
+      transition: all 0.8s ease-in-out;
+      backdrop-filter: blur(8px);
+      -ms-overflow-style: none; /* for Internet Explorer, Edge */
+      scrollbar-width: none; /* for Firefox */
+      overflow-y: scroll;
+      &::-webkit-scrollbar {
+        display: none;
+      }
       h1 {
         font-size: 60px;
         margin: 0;
@@ -133,7 +137,6 @@ section {
     &:hover {
       border: 2px solid rgb(229, 9, 20);
       padding: 5px;
-      width: 900px;
       transition-delay: 0.3s;
       #card {
         -webkit-box-shadow: 12px 2px 15px 5px rgb(229, 9, 20);
@@ -141,7 +144,9 @@ section {
       }
       .CardInfo {
         opacity: 1;
-        transition-delay: 1.6s;
+        top: 0;
+        background-color: rgba(0, 0, 0, 0.507);
+        transition-delay: 0.2s;
       }
     }
   }
