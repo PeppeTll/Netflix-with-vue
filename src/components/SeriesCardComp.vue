@@ -96,7 +96,8 @@ section {
     .CardInfo {
       display: flex;
       flex-direction: column;
-      justify-content: space-evenly;
+      row-gap: 20px;
+      flex-shrink: 1;
       align-items: center;
       color: white;
       position: absolute;
@@ -114,14 +115,13 @@ section {
         display: none;
       }
       h1 {
-        font-size: 60px;
+        font-size: 1vw;
         margin: 0;
         color: rgb(229, 9, 20);
       }
       h3 {
         display: flex;
         align-items: center;
-        column-gap: 10px;
       }
       .goldStar {
         color: gold;
