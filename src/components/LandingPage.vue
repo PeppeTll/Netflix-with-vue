@@ -31,7 +31,7 @@ export default {
 .landingWrapper {
   position: relative;
   max-width: 100vw;
-  height: 90vh;
+  height: 85vh;
   margin: 0;
   overflow: hidden;
 

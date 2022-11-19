@@ -98,7 +98,8 @@ export function fetchMovie() {
     `${state.urlBase}${state.singleMovie}${randomID(200, 900000)}`,
     {
       params: {
-        api_key: state.apiKey
+        api_key: state.apiKey,
+        language: 'it-IT'
       },
     }
   )

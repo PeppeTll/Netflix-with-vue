@@ -92,7 +92,6 @@ section {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  position: fixed;
   right: 0;
   left: 0;
   flex-wrap: wrap;
