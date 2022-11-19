@@ -1,6 +1,6 @@
 <template>
   <section>
-    <div class="wrapperCard">
+    <div class="wrapperCard" v-motion-slide-visible-left>
       <div id="card">
         <img :src="getImageFunc()" alt="" />
       </div>

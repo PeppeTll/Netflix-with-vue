@@ -1,19 +1,28 @@
 <template>
-  <div id="app">
-    <Header />
-    <Main />
+  <div id="app" >
+    <Header v-show="loading === true" />
+    <Main v-show="loading === true" />
+    <LoadingPage v-show="loading === false"/>
   </div>
 </template>
 
 <script>
 import Header from './components/HeaderComp.vue';
 import Main from './components/MainComp.vue';
+import LoadingPage from './components/LoadingComp.vue';
+import state from './store';
 
 export default {
   name: 'App',
   components: {
   Header,
   Main,
+  LoadingPage
+  },
+  computed: {
+    loading: function() {
+      return state.loadingPage
+    }
   }
 }
 </script>

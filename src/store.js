@@ -14,6 +14,7 @@ const state = Vue.observable(
     topSeries: '/tv/top_rated',
     singleMovie: '/movie/',
     singleMovieObject: {},
+    loadingPage: false
   }
 )
 
@@ -106,8 +107,11 @@ export function fetchMovie() {
       if (res.data.backdrop_path === null || res.data.adult) {
         return fetchMovie();
       }
-      state.singleMovieObject = res.data;
-      console.log(state.singleMovieObject);
+      setTimeout(() => {
+        state.loadingPage = true
+        state.singleMovieObject = res.data;
+        console.log(state.singleMovieObject);
+      }, 3000)
     })
     .catch((error) => {
       if (error.data === undefined) {

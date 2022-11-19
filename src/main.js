@@ -2,6 +2,8 @@
 import Vue from 'vue'
 import App from './App'
 
+import { createApp } from 'vue-demi'
+
 /* import the fontawesome core */
 import { library } from '@fortawesome/fontawesome-svg-core'
 
@@ -24,13 +26,20 @@ library.add(faForwardStep)
 library.add(faBackwardStep)
 library.add(faStar)
 
+import { MotionPlugin } from '@vueuse/motion'
 
 /* add font awesome icon component */
 Vue.component('font-awesome-icon', FontAwesomeIcon)
 
 Vue.config.productionTip = false
 
-new Vue({
-  render: h => h(App),
-}).$mount('#app')
+
+const app = createApp(App)
+
+app.use(MotionPlugin)
+app.mount('#app')
+
+
+
+
 

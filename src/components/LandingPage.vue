@@ -1,10 +1,7 @@
 <template>
   <div class="landingWrapper">
     <figure>
-      <img
-        :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`"
-        alt=""
-      />
+      <img :src="`https://image.tmdb.org/t/p/original${movie.backdrop_path}`" alt=""/>
       <div class="info">
         <h1>{{ movie.original_title }}</h1>
         <p>{{ movie.title }}</p>
@@ -34,7 +31,7 @@ export default {
 .landingWrapper {
   position: relative;
   max-width: 100vw;
-  height: 40vw;
+  height: 90vh;
   margin: 0;
   overflow: hidden;
 
@@ -48,7 +45,10 @@ export default {
     left: 0;
     right: 0;
     bottom: 0;
-    width: 100%;
+    width: 100vw;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
   }
 
   .info {
@@ -59,7 +59,8 @@ export default {
     left: 0%;
     background: rgba(0, 0, 0, 0.414);
     backdrop-filter: blur(8px);
-    h1, p {
+    h1,
+    p {
       padding: 15px !important;
     }
   }
