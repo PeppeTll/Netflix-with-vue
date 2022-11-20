@@ -30,6 +30,10 @@ export default {
 <style lang="scss">
 @import './assets/scss/mixins';
 
+html {
+  scroll-behavior: smooth;
+}
+
 body {
   @include reset;
   background-color: rgb(20,20,20);
